@@ -1,6 +1,6 @@
 # Cloudflare Workers Sentry Proxy
 
-A dead simple Cloudflare Worker to proxy requests to Sentry to prevent them from being blocked by a browser adblocker.
+A dead simple Cloudflare Worker to proxy requests to Sentry to prevent them from being [blocked by a browser adblocker](https://github.com/easylist/easylist/issues/6963).
 
 The Cloudflare worker should ideally be mounted on the domain used by your application. This should prevent any CORS issues. For example, if your site is https://example.com, the worker should be mounted on something like https://example.com/error-reporting-proxy.
 
@@ -17,6 +17,8 @@ To get started, click the button above or deploy this worker using whatever meth
 Next, you need to add a route to your worker to cover each application you want to proxy. Head to `Triggers`, then `Routes`. Your route should look something like this:
 
 `myapp.example.com/error-reporting-proxy/*`
+
+or add it everywhere: `*.example.com/error-reporting-proxy/*`
 
 You can rename `error-reporting-proxy` to whatever you want, just make sure your application doesn't use the same path, as all requests to that path will be proxied.
 
@@ -66,10 +68,14 @@ SENTRY_INGEST_DOMAIN=sentry.example.com
 This is set to `ingest.sentry.io` by default to prevent aritrary requests to any URL.
 
 
-### \<script> setup
+## \<script> setup
 
 If you are using the `<script>` tag to include Sentry, you can change the URL from `https://js.sentry-cdn.com/` to the following to prevent the browser from blocking the request:
 
 ```html
 <script src="/error-reporting-proxy/<your dsn>.min.js" crossorigin="anonymous"></script>
 ```
+
+## Updating
+
+If you used the Deploy with Workers button above, you just need to keep your fork up to date.
