@@ -34,8 +34,8 @@ Sentry.init({
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 
-  //!!!! important bit
-  tunnel: "/error-reporting-proxy",
+  //!!!! important bit (remember trailing slash) !!!!
+  tunnel: "/error-reporting-proxy/",
 });
 ```
 
