@@ -47,7 +47,7 @@ If that's all you're looking for, you're done! I've included a few extra options
 
 Strict mode is a feature that will only allow specific DSNs to be proxied. This is useful if you want to make sure that only your applications are using the proxy. It's highly unlikely that anyone is going to do this, especially considering CORS will make it inviable, but it's here if you want it.
 
-To enable strict mode, add your DSNs to the `ALLOWED_DSN` environment variable, separated by a comma. For example:
+To enable strict mode, add your DSNs to the `ALLOWED_DSN` environment variable, separated by a comma. You can modify environment variables in `wrangler.toml`. For example:
 
 ```
 ALLOWED_DSN=https://dsn1,https://dsn2
@@ -59,7 +59,7 @@ Remember to update the environment variable if you add a new application/DSN.
 
 ## Self-hosted Sentry
 
-If you have a fancy self-hosted Sentry instance or a custom URL, you can set the `SENTRY_INGEST_DOMAIN` environment variable to your Sentry domain. For example:
+If you have a fancy self-hosted Sentry instance or a custom URL, you can set the `SENTRY_INGEST_DOMAIN` environment variable (see `wrangler.toml`) to your Sentry domain. For example:
 
 ```
 SENTRY_INGEST_DOMAIN=sentry.example.com
